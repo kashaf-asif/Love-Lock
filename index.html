@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>8 Days Left – Love Lock</title>
+
+  <!-- Import Google Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .lock {
+      font-size: 60px;
+      margin-bottom: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .riddle {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ff4081;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #f50057;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .unlocked {
+      color: green;
+      animation: pop 0.5s ease;
+    }
+
+    .error {
+      color: red;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="lock" id="lock">🔒</div>
+  <div class="riddle">
+    I'm made of 8 letters, sweet as a dove —<br>
+    They call the couple this, a symbol of love.
+  </div>
+  <input type="text" id="codeInput" maxlength="8" placeholder="Enter Code" />
+  <br/>
+  <button onclick="checkCode()">Unlock</button>
+  <div class="message" id="resultMsg"></div>
+</div>
+
+<script>
+  function checkCode() {
+    const input = document.getElementById("codeInput").value.toUpperCase();
+    const result = document.getElementById("resultMsg");
+    const lockIcon = document.getElementById("lock");
+
+    if (input === "LOVEBIRD") {
+      lockIcon.textContent = "🔓";
+      result.className = "message unlocked";
+      result.innerHTML = "<strong>8 Days Left! 💖</strong>";
+
+      setTimeout(() => {
+        result.innerHTML += "<br>May your journey together be filled with endless laughter, unwavering support, and a love that only grows stronger with time. Here's to forever, sealed with every heartbeat. 💖💕";
+      }, 1500);
+    } else {
+      result.textContent = "Wrong Code! Try Again ❤️‍🩹";
+      result.className = "message error";
+    }
+  }
+</script>
+
+</body>
+</html>
